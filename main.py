@@ -1,0 +1,48 @@
+import cv2
+import os
+from tqdm import tqdm
+from utils import DatasetManager
+from alpr_pipeline import ALPRPipeline
+
+def main():
+    videos = [
+        "./data/natal_test.webm",
+    ]
+
+    dataset_manager = DatasetManager("output_dataset")
+
+    pipeline = ALPRPipeline(
+        dataset_manager=dataset_manager,
+        min_conf_car=0.5,
+        min_conf_plate=0.6,
+        min_conf_ocr=0.4
+    )
+
+    for video_path in videos:
+        print(f"Processando vídeo: {video_path}")
+        if not os.path.exists(video_path):
+            print(f"Vídeo não encontrado: {video_path}")
+            continue
+
+        cap = cv2.VideoCapture(video_path)
+        total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+        video_name = os.path.basename(video_path)
+        frame_num = 0
+
+        with tqdm(total=total_frames, desc=video_name) as pbar:
+            while cap.isOpened():
+                ret, frame = cap.read()
+                if not ret:
+                    break
+
+                frame_num += 1
+                pipeline.process_frame(frame, video_name, frame_num)
+                pbar.update(1)
+
+        cap.release()
+
+    dataset_manager.export_csvs()
+    print("Processamento concluído. Datasets exportados.")
+
+if __name__ == "__main__":
+    main()

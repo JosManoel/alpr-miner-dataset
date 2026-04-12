@@ -38,4 +38,11 @@ metadata
 
 *.log
 
-data/
+output_dataset/
+
+#data bruto
+
+*.webm
+*.mp4
+*.wav
+*.mkv
