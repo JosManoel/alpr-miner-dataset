@@ -79,10 +79,9 @@ class ALPRPipeline:
 
                     char_id = f"{ocr_group_id}_{idx}"
                     # id_font referencia o plate_id (UUID)
-                    self.db.save_record("char", char_id, plate_id, plate_crop, char_seg.bbox.xyxy, recognized.label, recognized.confidence, source_video, (224, 64))
+                    self.db.save_record("char", char_id, plate_id, None, char_seg.bbox.xyxy, recognized.label, recognized.confidence, source_video, None)                # 5. Consolidação do OCR se tiver 7 caracteres
 
-                # 5. Consolidação do OCR se tiver 7 caracteres
                 if len(full_text) == 7:
                     avg_conf = sum(confidences) / len(confidences)
                     # id_font referencia o plate_id (UUID)
-                    self.db.save_record("ocr", ocr_group_id, plate_id, None, plate.bbox.xyxy, full_text, avg_conf, source_video, None)
+                    self.db.save_record("ocr", ocr_group_id, plate_id, plate_crop, plate.bbox.xyxy, full_text, avg_conf, source_video, (224, 64))

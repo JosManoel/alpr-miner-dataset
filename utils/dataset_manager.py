@@ -8,9 +8,10 @@ class DatasetManager:
         self.base_dir = base_dir
         self.car_dir = os.path.join(base_dir, "cars")
         self.plate_dir = os.path.join(base_dir, "plates")
-        self.char_dir = os.path.join(base_dir, "ocr")
+        self.char_dir = os.path.join(base_dir, "chars")
+        self.ocr_dir = os.path.join(base_dir, "ocrs")
 
-        for d in [self.car_dir, self.plate_dir, self.char_dir]:
+        for d in [self.car_dir, self.plate_dir, self.char_dir, self.ocr_dir]:
             os.makedirs(d, exist_ok=True)
 
         self.car_records = []
@@ -44,8 +45,10 @@ class DatasetManager:
                 cv2.imwrite(img_path, img_resized)
 
         elif dataset_type == "ocr":
-            # Para o dataset de OCR consolidado, apenas salvamos o registro no CSV
+            img_path = os.path.join(self.ocr_dir, f"{record_id}.jpg")
             self.ocr_records.append([record_id, id_font, str(bbox), label, conf, source_video])
+            if img_resized is not None:
+                cv2.imwrite(img_path, img_resized)
 
     def export_csvs(self):
         columns = ["id", "id_font", "bbox", "label", "conf", "source_video"]

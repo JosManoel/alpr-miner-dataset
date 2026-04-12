@@ -6,10 +6,10 @@ from alpr_pipeline import ALPRPipeline
 
 def main():
     videos = [
-        "./data/natal_test.webm",
-        "./data/pelas_ruas_salvador.webm",
-        "./data/dirigir_em_salvador.webm",
-        "./data/salvador_bahia.webm",
+        "./data/natal.webm",
+        # "./data/pelas_ruas_salvador.webm", erro         - removido
+        # "./data/dirigir_em_salvador.webm", muito grande - removido
+        # "./data/salvador_bahia.webm",      erro         - removido
         "./data/sao_paulo-tiete.webm"
     ]
 
