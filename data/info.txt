@@ -1,0 +1,29 @@
+arquivo: natal.webm
+titulo: NATAL-RN VAMOS CONHECER RUAS DA cidade do sol
+canal: JOSINALDO NUNES 01
+url: https://www.youtube.com/watch?v=NyEmaL8KiVY&t
+acesso: 12.04.2026
+
+arquivo: pelas_ruas_salvador.webm
+titulo: Pelas Ruas de Salvador à Noite: O Passeio Mais TRANQUILO e Satisfatório que Você Vai Ver!
+canal: Pelas Ruas da Cidade
+url: https://www.youtube.com/watch?v=4ykcBnJzO4A
+acesso: 12.04.2026
+
+arquivo: dirigir_em_salvador.webm
+titulo: Dirigir Em Salvador: Pelas Ruas Existe Beleza e Caos No Mesmo Lugar?🚗😍
+canal: Pelas Ruas da Cidade
+url: https://www.youtube.com/watch?v=3I8nk1Lruac
+acesso: 12.04.2026
+
+arquivo: salvador_bahia.webm
+titulo: SALVADOR BAHIA - AV TANCREDO NEVES - DO SHOPPING DA BAHIA ATÉ O SALVADOR SHOPPING
+canal: Vumbora 4k
+url: https://www.youtube.com/watch?v=1fj-DIsEAKQ
+acesso: 12.04.2026
+
+arquivo: sao_paulo-tiete.webm
+titulo: 🇧🇷 Marginal Tietê com trânsito intenso, São Paulo 4K
+canal: São Paulo Urbana
+url: https://www.youtube.com/watch?v=PWXIED4fv8U
+acesso: 12.04.2026
