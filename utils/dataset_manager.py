@@ -14,10 +14,20 @@ class DatasetManager:
         for d in [self.car_dir, self.plate_dir, self.char_dir, self.ocr_dir]:
             os.makedirs(d, exist_ok=True)
 
-        self.car_records = []
-        self.plate_records = []
-        self.char_records = []
-        self.ocr_records = []
+        self.columns = ["id", "id_font", "bbox", "label", "conf", "source_video"]
+
+        # Mapeamento dos CSVs
+        self.csv_paths = {
+            "car": os.path.join(self.base_dir, "cars_dataset.csv"),
+            "plate": os.path.join(self.base_dir, "plates_dataset.csv"),
+            "char": os.path.join(self.base_dir, "chars_dataset.csv"),
+            "ocr": os.path.join(self.base_dir, "ocrs_dataset.csv")
+        }
+
+        # Cria os arquivos CSV
+        for path in self.csv_paths.values():
+            if not os.path.exists(path):
+                pd.DataFrame(columns=self.columns).to_csv(path, index=False)
 
     def save_record(self, dataset_type: str, record_id: str, id_font: str, image: np.ndarray | None,
                     bbox: tuple, label: str, conf: float, source_video: str, resize_dim: tuple | None):
@@ -26,35 +36,25 @@ class DatasetManager:
         if image is not None and resize_dim is not None:
             img_resized = cv2.resize(image, resize_dim)
 
+        # escolhe as pastas
         if dataset_type == "car":
-            img_path = os.path.join(self.car_dir, f"{record_id}.jpg")
-            self.car_records.append([record_id, id_font, str(bbox), label, conf, source_video])
-            if img_resized is not None:
-                cv2.imwrite(img_path, img_resized)
-
+            img_dir = self.car_dir
         elif dataset_type == "plate":
-            img_path = os.path.join(self.plate_dir, f"{record_id}.jpg")
-            self.plate_records.append([record_id, id_font, str(bbox), label, conf, source_video])
-            if img_resized is not None:
-                cv2.imwrite(img_path, img_resized)
-
+            img_dir = self.plate_dir
         elif dataset_type == "char":
-            img_path = os.path.join(self.char_dir, f"{record_id}.jpg")
-            self.char_records.append([record_id, id_font, str(bbox), label, conf, source_video])
-            if img_resized is not None:
-                cv2.imwrite(img_path, img_resized)
-
+            img_dir = self.char_dir
         elif dataset_type == "ocr":
-            img_path = os.path.join(self.ocr_dir, f"{record_id}.jpg")
-            self.ocr_records.append([record_id, id_font, str(bbox), label, conf, source_video])
-            if img_resized is not None:
-                cv2.imwrite(img_path, img_resized)
+            img_dir = self.ocr_dir
+        else:
+            return
 
-    def export_csvs(self):
-        columns = ["id", "id_font", "bbox", "label", "conf", "source_video"]
+        # Salva a imagem
+        if img_resized is not None:
+            img_path = os.path.join(img_dir, f"{record_id}.jpg")
+            cv2.imwrite(img_path, img_resized)
 
-        # cria as tabelas
-        pd.DataFrame(self.car_records, columns=columns).to_csv(os.path.join(self.base_dir, "cars_dataset.csv"), index=False)
-        pd.DataFrame(self.plate_records, columns=columns).to_csv(os.path.join(self.base_dir, "plates_dataset.csv"), index=False)
-        pd.DataFrame(self.char_records, columns=columns).to_csv(os.path.join(self.base_dir, "chars_dataset.csv"), index=False)
-        pd.DataFrame(self.ocr_records, columns=columns).to_csv(os.path.join(self.base_dir, "ocrs_dataset.csv"), index=False)
+        # Salva linha no csv
+        row_data = [[record_id, id_font, str(bbox), label, conf, source_video]]
+        csv_path = self.csv_paths[dataset_type]
+
+        pd.DataFrame(row_data, columns=self.columns).to_csv(csv_path, mode='a', header=False, index=False)
