@@ -45,7 +45,6 @@ def main():
 
         cap.release()
 
-    dataset_manager.export_csvs()
     print("Processamento concluído. Datasets exportados.")
 
 if __name__ == "__main__":
