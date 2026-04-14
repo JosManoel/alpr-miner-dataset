@@ -6,11 +6,11 @@ from alpr_pipeline import ALPRPipeline
 
 def main():
     videos = [
-        "./data/natal.webm",
+        # "./data/natal.webm",
         "./data/pelas_ruas_salvador.mp4",
-        "./data/dirigir_em_salvador.mp4",
-        "./data/salvador_bahia.mp4",
-        "./data/sao_paulo-tiete.webm"
+        # "./data/dirigir_em_salvador.mp4",
+        # "./data/salvador_bahia.mp4",
+        # "./data/sao_paulo-tiete.webm"
     ]
 
     dataset_manager = DatasetManager("output_dataset")

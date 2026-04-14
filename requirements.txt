@@ -2,9 +2,9 @@ tqdm
 numpy<2.0.0
 opencv-python
 pandas
-onnxruntime
+#onnxruntime
 onnxruntime-tools
 Pillow
-
+onnxruntime-gpu
 matplotlib
 seaborn

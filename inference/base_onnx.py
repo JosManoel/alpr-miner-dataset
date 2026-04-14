@@ -7,7 +7,8 @@ from abc import ABC, abstractmethod
 
 class BaseONNX:
     def __init__(self, model_path: str, input_shape: tuple[int, int]):
-        providers = ['CPUExecutionProvider']
+        providers = ['CUDAExecutionProvider', 'CPUExecutionProvider']
+
         self.session = ort.InferenceSession(model_path, providers=providers)
         self.input_name = self.session.get_inputs()[0].name
         self.input_shape = input_shape

@@ -5,7 +5,7 @@ from utils.utils import DetectedObject, BBoxModel
 
 class CharacterRecognition:
     def __init__(self):
-        providers = ['CPUExecutionProvider']
+        providers = ['CUDAExecutionProvider', 'CPUExecutionProvider']
 
         self.path_letra_antiga = "./models/recognition_letra_antiga.onnx"
         self.path_letra_nova = "./models/recognition_letra_nova.onnx"
