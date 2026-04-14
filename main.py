@@ -7,9 +7,9 @@ from alpr_pipeline import ALPRPipeline
 def main():
     videos = [
         "./data/natal.webm",
-        "./data/pelas_ruas_salvador.webm",
-        "./data/dirigir_em_salvador.webm",
-        "./data/salvador_bahia.webm",
+        "./data/pelas_ruas_salvador.mp4",
+        "./data/dirigir_em_salvador.mp4",
+        "./data/salvador_bahia.mp4",
         "./data/sao_paulo-tiete.webm"
     ]
 
@@ -17,9 +17,9 @@ def main():
 
     pipeline = ALPRPipeline(
         dataset_manager=dataset_manager,
-        min_conf_car=0.9,
-        min_conf_plate=0.9,
-        min_conf_ocr=0.9
+        min_conf_car=0.975,
+        min_conf_plate=0.975,
+        min_conf_ocr=0.975
     )
 
     for video_path in videos:

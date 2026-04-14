@@ -46,3 +46,5 @@ output_dataset/
 *.mp4
 *.wav
 *.mkv
+
+data/yt-dlp_linux

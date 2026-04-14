@@ -3,6 +3,7 @@ import numpy as np
 from inference import CarDetection, LPDetection, LPRecognition, CharacterRecognition
 from utils import DatasetManager
 from utils import crop_image
+import cv2
 
 class ALPRPipeline:
     def __init__(self, dataset_manager: DatasetManager,
@@ -21,6 +22,7 @@ class ALPRPipeline:
         self.db = dataset_manager
 
     def process_frame(self, frame: np.ndarray, source_video: str, frame_num: int):
+        frame = cv2.resize(frame, (1280, 720))
         # 1. Detecção de Veículos
         cars = self.car_det.run_inference(frame)
 
@@ -35,6 +37,8 @@ class ALPRPipeline:
             if car_crop.size == 0:
                 continue
 
+            car_crop = cv2.resize(car_crop, (640, 640))
+
             # 2. Detecção de Placas
             plates = self.lp_det.run_inference(car_crop)
             for plate in plates:
@@ -47,6 +51,8 @@ class ALPRPipeline:
                 plate_crop = crop_image(car_crop, plate.bbox)
                 if plate_crop.size == 0:
                     continue
+
+                plate_crop = cv2.resize(plate_crop, (224, 64))
 
                 # 3. Segmentação de Caracteres
                 char_segments = self.lp_seg.run_inference(plate_crop)
