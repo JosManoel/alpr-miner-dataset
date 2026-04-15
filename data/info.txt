@@ -27,3 +27,28 @@ titulo: 🇧🇷 Marginal Tietê com trânsito intenso, São Paulo 4K
 canal: São Paulo Urbana
 url: https://www.youtube.com/watch?v=PWXIED4fv8U
 acesso: 12.04.2026
+
+arquivo: 1h20min-sao_paulo.mp4
+titulo: 🇧🇷 1h20 dirigindo em São Paulo 4K
+canal: São Paulo Urbana
+url: https://www.youtube.com/watch?v=oYcV8GRyv1w
+acesso: 14.04.2026
+
+arquivo: rio_De_janeiro.mp4
+titulo: Dirigindo no Rio de Janeiro
+canal: Dirigindo no RJ
+url: https://www.youtube.com/watch?v=HB0pwy60BOA
+acesso: 14.04.2026
+
+arquivo: rio_de_janeiro_asmr.mp4
+titulo: Dirigindo no Rio de Janeiro (in silence) ASMR
+canal: Dirigindo no RJ
+url: https://www.youtube.com/watch?v=TLu6_fn3cPo
+acesso: 14.04.2026
+
+arquivo: rio_de_janeiro_castelo_branco.mp4
+titulo: As mais belas imagens da Rodovia Castelo Branco, chegando em São Paulo
+canal: Papo no volante
+url: https://www.youtube.com/watch?v=l5irRphzAk0
+acesso: 14.04.2026
+
