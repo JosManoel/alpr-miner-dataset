@@ -5,16 +5,19 @@ import numpy as np
 
 class DatasetManager:
     def __init__(self, base_dir: str = "dataset_output"):
-        self.base_dir = base_dir
-        self.car_dir = os.path.join(base_dir, "cars")
-        self.plate_dir = os.path.join(base_dir, "plates")
-        self.char_dir = os.path.join(base_dir, "chars")
-        self.ocr_dir = os.path.join(base_dir, "ocrs")
+        #salva no /dados
+        self.base_dir = "/dados/canela/alpr-dataset/output_dataset"
+
+        self.car_dir = os.path.join(self.base_dir, "cars")
+        self.plate_dir = os.path.join(self.base_dir, "plates")
+        self.char_dir = os.path.join(self.base_dir, "chars")
+        self.ocr_dir = os.path.join(self.base_dir, "ocrs")
 
         for d in [self.car_dir, self.plate_dir, self.char_dir, self.ocr_dir]:
             os.makedirs(d, exist_ok=True)
 
         self.columns = ["id", "id_font", "bbox", "label", "conf", "source_video"]
+
 
         # Mapeamento dos CSVs
         self.csv_paths = {
