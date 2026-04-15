@@ -6,20 +6,24 @@ from alpr_pipeline import ALPRPipeline
 
 def main():
     videos = [
-        # "./data/natal.webm",
+        "./data/natal.webm",
         "./data/pelas_ruas_salvador.mp4",
-        # "./data/dirigir_em_salvador.mp4",
-        # "./data/salvador_bahia.mp4",
-        # "./data/sao_paulo-tiete.webm"
+        "./data/dirigir_em_salvador.mp4",
+        "./data/salvador_bahia.mp4",
+        "./data/sao_paulo-tiete.webm",
+        "./data/1h20min-sao_paulo.mp4",
+        "./data/rio_De_janeiro.mp4",
+        "./data/rio_de_janeiro_asmr.mp4",
+        "./data/rio_de_janeiro_castelo_branco.mp4"
     ]
 
     dataset_manager = DatasetManager("output_dataset")
 
     pipeline = ALPRPipeline(
         dataset_manager=dataset_manager,
-        min_conf_car=0.975,
-        min_conf_plate=0.975,
-        min_conf_ocr=0.975
+        min_conf_car=0.9,
+        min_conf_plate=0.9,
+        min_conf_ocr=0.9
     )
 
     for video_path in videos:
